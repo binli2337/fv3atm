@@ -145,8 +145,8 @@ module GFS_typedefs
     character(len=32), pointer :: tracer_names(:) !< tracers names to dereference tracer id
                                                   !< based on name location in array
     character(len=64) :: fn_nml                   !< namelist filename
-    character(len=256), pointer :: input_nml_file(:) !< character string containing full namelist
-                                                     !< for use with internal file reads
+    character(len=:), pointer, dimension(:) :: input_nml_file => null() !< character string containing full namelist
+                                                                        !< for use with internal file reads
   end type GFS_init_type
 
 
@@ -547,8 +547,8 @@ module GFS_typedefs
     integer              :: nthreads        !< OpenMP threads available for physics
     integer              :: nlunit          !< unit for namelist
     character(len=64)    :: fn_nml          !< namelist filename for surface data cycling
-    character(len=256), pointer :: input_nml_file(:) !< character string containing full namelist
-                                                     !< for use with internal file reads
+    character(len=:), pointer, dimension(:) :: input_nml_file => null() !< character string containing full namelist
+                                                                        !< for use with internal file reads
     integer              :: input_nml_file_length    !< length (number of lines) in namelist for internal reads
     integer              :: logunit
     real(kind=kind_phys) :: fhzero          !< hours between clearing of diagnostic buckets
@@ -2942,7 +2942,7 @@ module GFS_typedefs
     integer,                intent(in) :: idat(8)
     integer,                intent(in) :: jdat(8)
     character(len=32),      intent(in) :: tracer_names(:)
-    character(len=256),     intent(in), pointer :: input_nml_file(:)
+    character(len=:),       intent(in), pointer, dimension(:) :: input_nml_file
     integer,                intent(in) :: blksz(:)
     real(kind=kind_phys), dimension(:), intent(in) :: ak
     real(kind=kind_phys), dimension(:), intent(in) :: bk
@@ -3537,6 +3537,8 @@ module GFS_typedefs
 
 !--- read in the namelist
 #ifdef INTERNAL_FILE_NML
+    allocate(Model%input_nml_file, mold=input_nml_file)  ! needed for a suspected bug in gnu
+                                                         ! https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100886
     Model%input_nml_file => input_nml_file
     read(Model%input_nml_file, nml=gfs_physics_nml)
     ! Set length (number of lines) in namelist for internal reads

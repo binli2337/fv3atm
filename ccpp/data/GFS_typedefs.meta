@@ -2300,7 +2300,7 @@
   units = none
   dimensions = (number_of_lines_of_namelist_filename_for_internal_file_reads)
   type = character
-  kind = len=256
+  kind = len=:
 [logunit]
   standard_name = iounit_log
   long_name = fortran unit number for logfile
