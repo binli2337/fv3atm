@@ -73,7 +73,7 @@ module fv_moving_nest_physics_mod
   use constantsR4_mod,          only: cp_air, rdgas, grav, rvgas, kappa, pstd_mks, hlv
 #else
   use constants_mod,          only: cp_air, rdgas, grav, rvgas, kappa, pstd_mks, hlv
-#fi
+#endif
   use field_manager_mod,      only: MODEL_ATMOS
   use fv_arrays_mod,          only: fv_atmos_type, fv_nest_type, fv_grid_type, R_GRID
   use fv_moving_nest_types_mod,   only: fv_moving_nest_prog_type, fv_moving_nest_physics_type, mn_surface_grids, fv_moving_nest_type

@@ -71,7 +71,7 @@ module fv_moving_nest_utils_mod
   use constantsR4_mod,     only: grav
 #else
   use constants_mod,     only: grav
-#fi
+#endif
 
   use boundary_mod,      only: update_coarse_grid, update_coarse_grid_mpp
   use bounding_box_mod,  only: bbox, bbox_get_C2F_index, fill_bbox

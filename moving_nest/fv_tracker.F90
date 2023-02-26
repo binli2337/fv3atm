@@ -30,7 +30,7 @@ module fv_tracker_mod
   use constantsR4_mod,       only: pi=>pi_8, rad_to_deg, deg_to_rad, RVGAS, RDGAS
 #else
   use constants_mod,       only: pi=>pi_8, rad_to_deg, deg_to_rad, RVGAS, RDGAS
-#fi
+#endif
 
   use fms_mod,             only: mpp_clock_id, CLOCK_SUBCOMPONENT, clock_flag_default, &
                                  mpp_clock_begin, mpp_clock_end
