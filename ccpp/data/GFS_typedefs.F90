@@ -236,6 +236,8 @@ module GFS_typedefs
     real (kind=kind_phys), pointer :: soiltype_frac(:,:) => null()  !< fractions [0:1] of soil categories
                                                               !< [tsea in gbphys.f]
     real (kind=kind_phys), pointer :: tsfco  (:)   => null()  !< sst in K
+    real (kind=kind_phys), pointer :: ssu    (:)   => null()  !< surface zonal current in m s-1
+    real (kind=kind_phys), pointer :: ssv    (:)   => null()  !< surface meridional current in m s-1
     real (kind=kind_phys), pointer :: tsfcl  (:)   => null()  !< surface land temperature in K
     real (kind=kind_phys), pointer :: tisfc  (:)   => null()  !< surface temperature over ice fraction
     real (kind=kind_phys), pointer :: tiice(:,:)   => null()  !< internal ice temperature
@@ -2292,6 +2294,8 @@ module GFS_typedefs
     endif
 
     allocate (Sfcprop%tsfc     (IM))
+    allocate (Sfcprop%ssu      (IM))
+    allocate (Sfcprop%ssv      (IM))
     allocate (Sfcprop%tsfco    (IM))
     allocate (Sfcprop%tsfcl    (IM))
     allocate (Sfcprop%tisfc    (IM))
@@ -2348,6 +2352,8 @@ module GFS_typedefs
     endif
 
     Sfcprop%tsfc      = clear_val
+    Sfcprop%ssu       = clear_val
+    Sfcprop%ssv       = clear_val
     Sfcprop%tsfco     = clear_val
     Sfcprop%tsfcl     = clear_val
     Sfcprop%tisfc     = clear_val

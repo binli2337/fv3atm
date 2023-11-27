@@ -805,6 +805,20 @@
   dimensions = (horizontal_loop_extent)
   type = real
   kind = kind_phys
+[ssu]
+  standard_name = ocn_current_zonal
+  long_name = ocn_current_zonal
+  units = m s-1
+  dimensions = (horizontal_loop_extent)
+  type = real
+  kind = kind_phys
+[ssv]
+  standard_name = ocn_current_merid
+  long_name = ocn_current_merid
+  units = m s-1
+  dimensions = (horizontal_loop_extent)
+  type = real
+  kind = kind_phys
 [tsfcl]
   standard_name = surface_skin_temperature_over_land
   long_name = surface skin temperature over land
