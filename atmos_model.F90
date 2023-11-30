@@ -1989,12 +1989,10 @@ end subroutine update_atmos_chemistry
                   nb = Atm_block%blkno(i,j)
                   ix = Atm_block%ixp(i,j)
                   GFS_Data(nb)%Sfcprop%ssu(ix) = zero
-                  !GFS_Data(nb)%Sfcprop%ssu(ix) = 0.2
                   if (GFS_Data(nb)%Sfcprop%oceanfrac(ix) > zero) then  ! ocean points
                     if(mergeflg(i,j)) then
                      GFS_Data(nb)%Sfcprop%ssu(ix)       =  zero
                       datar8(i,j) = zero
-                !      datar8(i,j) = 0.2
                     else
                       GFS_Data(nb)%Sfcprop%ssu(ix)       = datar8(i,j)
                     endif
