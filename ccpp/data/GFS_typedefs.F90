@@ -533,7 +533,7 @@ module GFS_typedefs
 !   real (kind=kind_phys), pointer :: sfc_alb_vis_dir_cpl(:)  => null()   !< sfc vis albedo for direct rad
 !   real (kind=kind_phys), pointer :: sfc_alb_vis_dif_cpl(:)  => null()   !< sfc vis albedo for diffuse rad
     !--- only variable needed for cplwav2atm=.TRUE.
-!   real (kind=kind_phys), pointer :: zorlwav_cpl(:)          => null()   !< roughness length from wave model
+    real (kind=kind_phys), pointer :: zorlwav_cpl(:)          => null()   !< roughness length from wave model
     !--- also needed for ice/ocn coupling
     real (kind=kind_phys), pointer :: slimskin_cpl(:)=> null()   !< aoi_fld%slimskin(item,lan)
     !--- variables needed for use_med_flux =.TRUE.
@@ -2937,12 +2937,12 @@ module GFS_typedefs
       Coupling%tsfci_cpl = clear_val
     endif
 
-!   if (Model%cplwav2atm) then
+    if (Model%cplwav2atm) then
       !--- incoming quantities
-!     allocate (Coupling%zorlwav_cpl (IM))
+      allocate (Coupling%zorlwav_cpl (IM))
 
-!     Coupling%zorlwav_cpl  = clear_val
-!   endif
+      Coupling%zorlwav_cpl  = clear_val
+    endif
 
     if (Model%cplflx .or. Model%cpllnd) then
       allocate (Coupling%dlwsfci_cpl (IM))
