@@ -5031,6 +5031,7 @@ module GFS_typedefs
     Model%sfc_z0_type      = sfc_z0_type
     if (Model%cplwav2atm) Model%sfc_z0_type = -1
     Model%icplocn2atm      = icplocn2atm
+    if (Model%cplwav2atm.and.(Model%icplocn2atm.eq.1)) Model%sfc_z0_type = -1*sfc_z0_type
 
 !--- potential temperature reference in sfc layer
     Model%thsfc_loc        = thsfc_loc

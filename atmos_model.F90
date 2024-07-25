@@ -1963,9 +1963,8 @@ end subroutine update_atmos_chemistry
                 do i=isc,iec
                   nb = Atm_block%blkno(i,j)
                   ix = Atm_block%ixp(i,j)
-!                 if (GFS_data(nb)%Sfcprop%oceanfrac(ix) > zero .and.  datar8(i,j) > zorlmin) then
-                  if (GFS_data(nb)%Sfcprop%oceanfrac(ix) > zero) then
-                    if (mergeflg(i,j)) datar8(i,j)=GFS_data(nb)%Sfcprop%zorlw(ix) ! use initial value
+                  if (mergeflg(i,j)) datar8(i,j)=-999.0_GFS_kind_phys
+                  if (GFS_data(nb)%Sfcprop%oceanfrac(ix) > zero .and.  datar8(i,j) > zorlmin) then
                       if (datar8(i,j) > zorlmin) then
                         tem = 100.0_GFS_kind_phys * min(0.1_GFS_kind_phys, datar8(i,j))
 !                       GFS_data(nb)%Coupling%zorlwav_cpl(ix) = tem
