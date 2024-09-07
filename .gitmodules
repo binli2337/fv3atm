@@ -10,7 +10,9 @@
   path = ccpp/physics
   #url = https://github.com/hafs-community/ccpp-physics
   #branch = feature/hafs.v2.0.1
-  url = https://github.com/hafs-community/ccpp-physics
+  #url = https://github.com/hafs-community/ccpp-physics
+  #branch = hafsv2.0.1a_update
+  url = https://github.com/binli2337/ccpp-physics
   branch = hafsv2.0.1a_update
 [submodule "upp"]
   path = upp
